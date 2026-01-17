@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramez Gamal Shakra - Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0F172A;
+            color: #E5E7EB;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38BDF8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #38BDF8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #2563EB;
+            margin: 0 auto 30px;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #38BDF8;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: #E5E7EB;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #94A3B8;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-info a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #38BDF8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #2563EB, #38BDF8);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #38BDF8;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #2563EB, #38BDF8);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* USP Section */
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .usp-card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #2563EB;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .usp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .usp-card h3 {
+            color: #38BDF8;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skills-category {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid #22C55E;
+        }
+
+        .skills-category h3 {
+            color: #22C55E;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            color: #E5E7EB;
+        }
+
+        .skill-bar {
+            background: #0F172A;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            background: linear-gradient(90deg, #2563EB, #38BDF8);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2563EB;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2563EB, #38BDF8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            color: #38BDF8;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .project-content p {
+            color: #94A3B8;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #22C55E;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #38BDF8;
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, #2563EB, #38BDF8);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #22C55E;
+            border: 3px solid #0F172A;
+        }
+
+        .timeline-content {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2563EB;
+        }
+
+        .timeline-content h3 {
+            color: #38BDF8;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .date {
+            color: #22C55E;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            margin-left: 20px;
+            color: #94A3B8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #94A3B8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">RG</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="rz-final.jpeg">
+            <h1>Ramez Gamal Shakra</h1>
+            <h2>Data Analyst & Database Management Professional</h2>
+            <p>Detail-oriented data professional with experience since 2017 in image data handling, duplicate removal, and data accuracy assurance, seeking further learning and growth in the data analysis field.</p>
+            
+            <div class="contact-info">
+                <a href="tel:01069966890">📱 01069966890</a>
+                <a href="mailto:gamalramez839@gmail.com">✉️ gamalramez839@gmail.com</a>
+                <a href="https://www.linkedin.com/in/ramez-gamal-372723324" target="_blank">🔗 LinkedIn</a>
+            </div>
+            
+            <a href="https://github.com/Ramezgamal89" target="_blank" class="cta-button">View GitHub</a>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">What Makes Me Different</h2>
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <h3>Clear Communication</h3>
+                    <p>I have clear and effective communication skills, ensuring all project requirements are fully understood and stakeholders are always informed.</p>
+                </div>
+                <div class="usp-card">
+                    <h3>Time Management</h3>
+                    <p>Strong time management skills allow me to deliver quality work within agreed timelines and budgets without compromising on standards.</p>
+                </div>
+                <div class="usp-card">
+                    <h3>High Accuracy</h3>
+                    <p>A high level of accuracy in my work ensures data integrity and reliable results in every project I undertake.</p>
+                </div>
+                <div class="usp-card">
+                    <h3>Right Questions</h3>
+                    <p>I ask the right questions to fully understand project requirements and ensure correct results from the start.</p>
+                </div>
+                <div class="usp-card">
+                    <h3>Quality Commitment</h3>
+                    <p>Committed to delivering quality work within the agreed budget and scope, with strong technical skills in Excel and SQL.</p>
+                </div>
+                <div class="usp-card">
+                    <h3>Technical Excellence</h3>
+                    <p>Strong technical foundation in Excel, SQL, MySQL, and Statistics, backed by continuous learning and practical experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Excel</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>SQL</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Statistics</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Oracle PL/SQL</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Hard Working</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Team Leadership</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Communication</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Planning & Analysis</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🏨</div>
+                    <div class="project-content">
+                        <h3>Hotel Database System</h3>
+                        <p>Designed and developed a relational database system for managing hotel operations including guests, reservations, rooms, and payments.</p>
+                        <p><strong>Grade:</strong> Excellent</p>
+                        <p><strong>Technologies:</strong> Database Design, SQL</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🚗</div>
+                    <div class="project-content">
+                        <h3>Uber's 2024 Ride-Sharing Analysis</h3>
+                        <p>Comprehensive analysis of Uber's ride-sharing dataset, exploring bookings, vehicle performance, revenue, cancellations, and customer satisfaction.</p>
+                        <a href="https://github.com/Ramezgamal89/Uber-s-ride-data-analysis" target="_blank" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">✈️</div>
+                    <div class="project-content">
+                        <h3>Airline Flights Data Analysis</h3>
+                        <p>Analysis of flights between Delhi and Mumbai, exploring price patterns, duration trends, and how scheduling impacts cost & efficiency.</p>
+                        <a href="https://github.com/Ramezgamal89/airlines-flights-data-analysis" target="_blank" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3>Project Coming Soon</h3>
+                        <p>Currently working on exciting new data analysis projects. Stay tuned for updates!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">2017 - Present</div>
+                        <h3>Image Data Entry & Database Management</h3>
+                        <h4>Moral Affairs Department</h4>
+                        <ul>
+                            <li>Uploaded and managed image data within the database system</li>
+                            <li>Identified and removed duplicate images to ensure data accuracy and organization</li>
+                            <li>Maintained data integrity across multiple database systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">October 2014</div>
+                        <h3>Bachelor of Electronic Engineering</h3>
+                        <h4>University of Menofiya</h4>
+                        <p><strong>Major:</strong> Engineering and Computer Science</p>
+                        <p><strong>Grade:</strong> Acceptable</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Certifications & Courses</h3>
+                        <ul>
+                            <li>Digital Egypt Pioneers Initiative - DEPI (Data Analysis Track)</li>
+                            <li>Oracle SQL</li>
+                            <li>Oracle PL/SQL</li>
+                            <li>International English Language Courses</li>
+                            <li>Training in Studios and Radio Stations Transmission Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 18px; margin-bottom: 30px;">I'm always interested in hearing about new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-info" style="flex-direction: column;">
+                    <a href="mailto:gamalramez839@gmail.com" style="font-size: 18px;">✉️ gamalramez839@gmail.com</a>
+                    <a href="tel:01069966890" style="font-size: 18px;">📱 01069966890</a>
+                    <a href="https://www.linkedin.com/in/ramez-gamal-372723324" target="_blank" style="font-size: 18px;">🔗 LinkedIn Profile</a>
+                    <a href="https://github.com/Ramezgamal89" target="_blank" style="font-size: 18px;">💻 GitHub Profile</a>
+                </div>
+                <p style="margin-top: 20px; color: #94A3B8;">📍 Roxy, Heliopolis, Cairo, Egypt</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ramez Gamal Shakra. All rights reserved.</p>
+            <p style="margin-top: 10px;">Built with passion for data analysis and continuous learning.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Profile image upload functionality
+        const profileImage = document.getElementById('profileImage');
+        
+        // You can replace the placeholder with your actual image
+        // Just upload your image to your GitHub repository and update the src
+        // Example: profileImage.src = 'your-image-url.jpg';
+    </script>
+</body>
+</html>
