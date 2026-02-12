@@ -187,47 +187,91 @@
 
         /* Skills Section */
         .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .skills-category {
-            background: #1e293b;
-            padding: 30px;
-            border-radius: 12px;
-            border-top: 4px solid #22C55E;
+            position: relative;
         }
 
         .skills-category h3 {
-            color: #22C55E;
-            margin-bottom: 20px;
-            font-size: 24px;
+            color: #38BDF8;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        .skill-item {
-            margin-bottom: 15px;
+        .skills-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2563EB, #38BDF8);
+            border-radius: 2px;
         }
 
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            color: #E5E7EB;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
         }
 
-        .skill-bar {
-            background: #0F172A;
-            height: 8px;
-            border-radius: 4px;
+        .skill-card {
+            background: #1e293b;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .skill-progress {
-            background: linear-gradient(90deg, #2563EB, #38BDF8);
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(56, 189, 248, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #2563EB;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.3);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-name {
+            color: #E5E7EB;
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Projects Section */
@@ -259,6 +303,13 @@
             justify-content: center;
             font-size: 48px;
             color: white;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .project-content {
@@ -447,98 +498,68 @@
             <div class="skills-container">
                 <div class="skills-category">
                     <h3>Technical Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Excel</span>
-                            <span>90%</span>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <span class="skill-icon">📊</span>
+                            <div class="skill-name">Excel</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">🗄️</span>
+                            <div class="skill-name">SQL</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SQL</span>
-                            <span>85%</span>
+                        <div class="skill-card">
+                            <span class="skill-icon">💾</span>
+                            <div class="skill-name">MySQL</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">📈</span>
+                            <div class="skill-name">Statistics</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>MySQL</span>
-                            <span>85%</span>
+                        <div class="skill-card">
+                            <span class="skill-icon">⚙️</span>
+                            <div class="skill-name">Oracle PL/SQL</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">🔍</span>
+                            <div class="skill-name">Data Analysis</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Statistics</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Oracle PL/SQL</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">🗂️</span>
+                            <div class="skill-name">Database Management</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="skills-category">
                     <h3>Soft Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Hard Working</span>
-                            <span>95%</span>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <span class="skill-icon">💪</span>
+                            <div class="skill-name">Hard Working</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">👥</span>
+                            <div class="skill-name">Team Leadership</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Team Leadership</span>
-                            <span>85%</span>
+                        <div class="skill-card">
+                            <span class="skill-icon">💬</span>
+                            <div class="skill-name">Communication</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">🧩</span>
+                            <div class="skill-name">Problem Solving</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Communication</span>
-                            <span>90%</span>
+                        <div class="skill-card">
+                            <span class="skill-icon">📋</span>
+                            <div class="skill-name">Planning & Analysis</div>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">⏰</span>
+                            <div class="skill-name">Time Management</div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Problem Solving</span>
-                            <span>88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Planning & Analysis</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
+                        <div class="skill-card">
+                            <span class="skill-icon">🎯</span>
+                            <div class="skill-name">Attention to Detail</div>
                         </div>
                     </div>
                 </div>
@@ -552,7 +573,7 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image"><img src="hotel1.jpeg"></div>
+                    <div class="project-image">🏨</div>
                     <div class="project-content">
                         <h3>Hotel Database System</h3>
                         <p>Designed and developed a relational database system for managing hotel operations including guests, reservations, rooms, and payments.</p>
@@ -562,27 +583,20 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="uber1.jpeg"></div>
+                    <div class="project-image">
+                        <img src="DashboardRZ5.png" alt="Uber 2024 Ride-Sharing Analysis Dashboard">
+                    </div>
                     <div class="project-content">
                         <h3>Uber's 2024 Ride-Sharing Analysis</h3>
                         <p>Comprehensive analysis of Uber's ride-sharing dataset, exploring bookings, vehicle performance, revenue, cancellations, and customer satisfaction.</p>
                         <a href="https://github.com/Ramezgamal89/Uber-s-ride-data-analysis" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
-           </div>
-
-                <div class="project-card">
-                  <div class="project-image"><img src="bike1.jpeg">⁯</div>
-                    
-                    <div class="project-content">
-                        <h3>bike-accessories-analysis</h3>
-                        <p>Bike accessories data analysis identifies best-selling products and sales trends.
-                           It helps improve pricing, inventory, and business decisions.</p>
-                        <a href="https://github.com/Ramezgamal89/bike-accessories-analysis" target="_blank" class="project-link">View on GitHub →</a>
-                    </div>
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="airplane1.jpeg"></div>
+                    <div class="project-image">
+                        <img src="dashboard4.png" alt="Airline Flights Data Analysis Dashboard">
+                    </div>
                     <div class="project-content">
                         <h3>Airline Flights Data Analysis</h3>
                         <p>Analysis of flights between Delhi and Mumbai, exploring price patterns, duration trends, and how scheduling impacts cost & efficiency.</p>
@@ -591,10 +605,13 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-image"><img src="work_in_progress.jpeg"></div>
+                    <div class="project-image">
+                        <img src="bike_accessories.jpg" alt="Bike Accessories Analysis Dashboard">
+                    </div>
                     <div class="project-content">
-                        <h3>Project Coming Soon</h3>
-                        <p>Currently working on exciting new data analysis projects. Stay tuned for updates!</p>
+                        <h3>Bike Accessories Analysis</h3>
+                        <p>Comprehensive dashboard analysis of bike accessories data, exploring sales patterns, customer behavior, and product performance metrics.</p>
+                        <a href="https://github.com/Ramezgamal89/bike-accessories-analysis" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
             </div>
@@ -685,13 +702,6 @@
                 }
             });
         });
-
-        // Profile image upload functionality
-        const profileImage = document.getElementById('profileImage');
-        
-        // You can replace the placeholder with your actual image
-        // Just upload your image to your GitHub repository and update the src
-        // Example: profileImage.src = 'your-image-url.jpg';
     </script>
 </body>
 </html>
